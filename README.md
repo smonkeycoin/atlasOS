@@ -1,315 +1,68 @@
-# ATLAS OS
+# ATLAS OS Experience
 
-ATLAS OS es una primera versión local de un SaaS inmobiliario para México y LATAM creado por R³ Lab Studio.
+Home de producto para ATLAS OS, creada en HTML, CSS y JavaScript vanilla. Ya no funciona como landing tradicional: primero presenta la vision y despues abre el Workspace del producto.
 
-No es solo un CRM. Es un sistema operativo inmobiliario pensado para conectar inventario, leads, asesores, deals, WhatsApp, automatizaciones, documentos, analytics y publicación web en un solo núcleo operativo.
+## Como correr local
 
-## Cómo correrlo localmente
+Opcion 1: abrir `index.html` directamente en el navegador.
 
-Opción 1: abrir `index.html` directamente en el navegador.
-
-Opción 2: correr un servidor local desde esta carpeta:
+Opcion 2: servir la carpeta en un puerto local:
 
 ```bash
-python3 -m http.server 5500 --bind 127.0.0.1
+cd /Users/smonkeycoin/Desktop/landingatlas
+python3 -m http.server 5510 --bind 127.0.0.1
 ```
 
 Luego abrir:
 
 ```text
-http://127.0.0.1:5500
+http://127.0.0.1:5510
 ```
 
-## Login demo
+## Estructura actual
 
-Usuario:
+- `index.html`: dos experiencias 100vh con CSS Scroll Snap: `Atlas Experience` y `Workspace Experience`.
+- `app.js`: controla el Workspace unico, sus vistas internas y el flujo Founder mock.
+- `styles.css`: estilos de Atlas Experience, Workspace Experience, dashboard, responsive y fallback visual.
+- `story.html`: landing storytelling larga preservada.
+- `story.js`: interacciones de la landing storytelling preservada.
 
-```text
-admin@atlasos.mx
-```
+## Filosofia
 
-Password:
+- `Atlas Experience`: primera pantalla 100vh, cinematografica, con brand, mensaje y dos CTAs.
+- `Workspace Experience`: segunda pantalla 100vh, se siente como abrir la app.
+- CSS Scroll Snap conecta ambas experiencias con una transicion vertical.
+- No hay secciones repetidas debajo, grid externo de modulos ni demos apiladas.
+- Todos los modulos viven dentro del mismo Workspace mediante el sidebar: Property Engine, CRM, Kanban, WhatsApp, Automation, Analytics, Docs y Marketplace.
+- Las vistas cambian dentro del mismo Workspace con transicion suave.
 
-```text
-atlas123
-```
+## CTAs
 
-También existe el botón `Entrar como Founder Demo`.
+- `Solicitar acceso Founder` abre un flujo Founder mock en modal.
+- `Quiero saber mas` lleva a `story.html`.
+- En `story.html`, los botones `Entrar a Atlas` vuelven a `index.html#workspace` para abrir directamente la experiencia de producto.
+- No hay Stripe, backend, auth ni APIs reales conectadas en esta home.
 
-La sesión se guarda en `localStorage`. El botón `Cerrar sesión` elimina la sesión local.
+## Responsive
 
-## Filosofía de arquitectura
+- Breakpoints principales: `768px` y `430px`, con ajustes heredados para `560px`, `640px`, `720px`, `980px` y desktop compacto.
+- `index.html` usa `100svh` / `100dvh` en mobile para evitar cortes en Safari y Chrome mobile.
+- En mobile, el sidebar del Workspace se convierte en pills horizontales con scroll suave.
+- Las vistas del Workspace se apilan por modulo y evitan overflow horizontal de pagina.
+- `story.html` apila secciones, pricing, comparativas y demos; tabs y kanban usan scroll horizontal interno controlado.
 
-Atlas parte de eventos, no de pantallas aisladas.
+## Demo local
 
-```text
-Nuevo lead
-→ Lead Engine
-→ Asignación automática
-→ WhatsApp
-→ Deal
-→ Tarea
-→ Seguimiento
-→ Kanban
-→ Web Sync
-→ Analytics
-→ Notificación
-```
+- Dashboard funciona como Mission Control con KPIs, Atlas Intelligence, Live Activity, agenda, workflows, Web Sync Queue, alertas, asesor top y notificaciones.
+- Property Engine muestra `Penthouse Arcos Vallarta` con imagen, ubicación, precio, score, media, interest, status, owner y acciones rápidas.
+- CRM incluye Lead Intelligence, score, temperatura, siguiente mejor acción, propiedades sugeridas, timeline, fuente, último contacto y botones IA.
+- Kanban permite mover deals por drag and drop en desktop y con boton en mobile, con lenguaje visual por etapa.
+- WhatsApp OS opera como centro conversacional con lista, chat, burbujas, ficha de propiedad, respuesta IA y panel de contexto.
+- Automation muestra workflow activo, nodos, checks, timeline, última ejecución, tiempo, próxima ejecución e historial.
+- Docs funciona como expediente digital con documentos, estados y relaciones a Lead, Property, Deal, Cliente y Asesor.
+- Marketplace se presenta como App Store de integraciones con estados y acciones.
+- Analytics incluye mini gráficas, embudo, leads, comisiones, asesor top, inventario, ciudades y tiempo de respuesta.
 
-La idea central es que cada evento pueda activar una acción: seguimiento, WhatsApp, tarea, publicación web o alerta gerencial.
+## Nota de alcance
 
-El `Property Engine` evita doble captura y mantiene sincronizada la información comercial, operativa y pública. El `Web Engine` no edita HTML manualmente; consume datos centrales para publicar listings, landing pages, SEO metadata, MLS y portales.
-
-## Diferencia contra desarrollos a la medida
-
-Un desarrollo a la medida suele resolver flujos de una empresa específica. ATLAS OS está pensado como SaaS multiempresa, modular, automatizable y medible desde la base:
-
-- Workspace selector
-- Tenant ID demo
-- Roles
-- Plan Founder
-- Módulos activables
-- Billing placeholder
-- Integraciones tipo marketplace
-- Workflows reutilizables
-
-## V1 Local Prototype
-
-Esta versión incluye:
-
-- UI responsive en HTML, CSS y JavaScript vanilla
-- Login fake
-- Sesión en `localStorage`
-- Navegación SPA por hash/state interno
-- Datos demo creíbles
-- Command Center
-- Properties con drawer de Property Engine
-- CRM con Lead Intelligence
-- Deals / Kanban con drag & drop local y botones de etapa
-- WhatsApp OS operativo mock
-- Automation Engine visual
-- Web Engine
-- Docs
-- Analytics con gráficos CSS
-- Marketplace
-- Settings multi-tenant
-- Logo SVG propio
-
-## Roadmap SaaS
-
-### Fase 1 Local Prototype
-
-- UI
-- Datos demo
-- Navegación
-- Workflows mock
-- Property Engine mock
-- Web Engine mock
-
-### Fase 2 Backend
-
-- Supabase/Postgres
-- Auth real
-- Multi tenant
-- RLS
-- Storage
-- Audit logs
-
-### Fase 3 Automation
-
-- Event bus
-- Workflow engine
-- Job queue
-- Webhooks
-- WhatsApp API
-
-### Fase 4 Property Engine
-
-- API de propiedades
-- Media manager
-- SEO metadata
-- Web sync
-- Landing generator
-- MLS connector
-
-### Fase 5 Intelligence
-
-- Lead scoring
-- Recomendaciones
-- Summaries
-- Next best action
-- Performance insights
-
-### Fase 6 Billing
-
-- Stripe/Mercado Pago
-- Planes
-- Límites
-- Add-ons
-- Marketplace
-
-## Schema futuro propuesto
-
-```sql
-tenants (
-  id,
-  name,
-  plan,
-  status,
-  created_at
-)
-
-users (
-  id,
-  tenant_id,
-  name,
-  email,
-  role_id,
-  status,
-  created_at
-)
-
-roles (
-  id,
-  tenant_id,
-  name,
-  permissions
-)
-
-properties (
-  id,
-  tenant_id,
-  title,
-  city,
-  neighborhood,
-  price,
-  operation,
-  status,
-  advisor_id,
-  web_sync_status,
-  mls_status,
-  media_completeness,
-  lead_interest_score,
-  updated_at
-)
-
-property_media (
-  id,
-  tenant_id,
-  property_id,
-  url,
-  type,
-  sort_order,
-  metadata
-)
-
-leads (
-  id,
-  tenant_id,
-  name,
-  source,
-  advisor_id,
-  temperature,
-  score,
-  next_follow_up_at,
-  summary,
-  created_at
-)
-
-deals (
-  id,
-  tenant_id,
-  lead_id,
-  property_id,
-  stage_id,
-  value,
-  advisor_id,
-  last_interaction_at,
-  score
-)
-
-deal_stages (
-  id,
-  tenant_id,
-  name,
-  sort_order,
-  probability
-)
-
-activities (
-  id,
-  tenant_id,
-  actor_id,
-  entity_type,
-  entity_id,
-  event_type,
-  payload,
-  created_at
-)
-
-tasks (
-  id,
-  tenant_id,
-  owner_id,
-  lead_id,
-  deal_id,
-  title,
-  due_at,
-  status
-)
-
-messages (
-  id,
-  tenant_id,
-  lead_id,
-  channel,
-  direction,
-  body,
-  status,
-  sent_at
-)
-
-workflows (
-  id,
-  tenant_id,
-  name,
-  trigger_type,
-  conditions,
-  actions,
-  status
-)
-
-integrations (
-  id,
-  tenant_id,
-  provider,
-  status,
-  config,
-  connected_at
-)
-
-documents (
-  id,
-  tenant_id,
-  template_type,
-  lead_id,
-  deal_id,
-  property_id,
-  status,
-  generated_by,
-  created_at
-)
-```
-
-## Próximos pasos técnicos
-
-1. Separar datos mock en módulos o endpoints locales.
-2. Añadir router ligero y estado más formal.
-3. Migrar persistencia a Supabase/Postgres.
-4. Implementar auth real y RLS por tenant.
-5. Definir eventos internos y audit logs.
-6. Conectar WhatsApp Business API.
-7. Construir Workflow Engine real.
-8. Crear API del Property Engine.
-9. Añadir Web Engine con preview y publish queue reales.
-10. Incorporar billing con Stripe y Mercado Pago.
+Este proyecto es independiente de `/Users/smonkeycoin/Desktop/atlasos`. No toca backend, auth, Stripe real ni APIs reales.
