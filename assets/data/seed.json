@@ -1,0 +1,12 @@
+{
+  "tenant": {
+    "name": "R³ Realty Demo",
+    "plan": "Founder",
+    "tenantId": "tenant_r3_atlas_demo",
+    "status": "Local demo"
+  },
+  "demoLogin": {
+    "email": "admin@atlasos.mx",
+    "password": "atlas123"
+  }
+}
