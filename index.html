@@ -3,68 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ATLAS OS | Sistema operativo inmobiliario</title>
-    <meta name="description" content="ATLAS OS, el sistema operativo para inmobiliarias modernas.">
+    <title>ATLAS OS | Local Demo</title>
+    <meta name="description" content="ATLAS OS, sistema operativo para inmobiliarias modernas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/brand/atlas-symbol.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body class="atlas-product-home">
-    <main class="product-home">
-      <section class="atlas-experience" aria-labelledby="homeTitle">
-        <a class="product-brand hero-brand" href="index.html">
-          <img src="assets/brand/atlas-symbol.svg" alt="">
-          <span><strong>ATLAS OS</strong><small>Operating system</small></span>
-        </a>
-        <div class="hero-message">
-          <p class="product-badge">Founder Build · México y LATAM</p>
-          <h1 id="homeTitle">ATLAS OS</h1>
-          <h2>El sistema operativo para inmobiliarias modernas.</h2>
-          <p class="product-copy">Primero convierte la operación en claridad. Después convierte cada lead, propiedad y movimiento comercial en una acción inteligente.</p>
-        </div>
-        <div class="product-actions">
-          <button class="product-btn primary" id="founderAccess" type="button">Solicitar acceso Founder</button>
-          <a class="product-btn secondary" href="story.html">Quiero saber más</a>
-        </div>
-        <a class="scroll-cue" href="#workspace">Entrar al Workspace</a>
-      </section>
-
-      <section class="workspace-experience" id="workspace" aria-label="Workspace Experience">
-        <section class="atlas-dashboard atlas-workspace" aria-label="ATLAS OS workspace">
-          <aside class="dash-sidebar">
-            <div class="dash-mark"><img src="assets/brand/atlas-symbol.svg" alt=""><span>ATLAS</span></div>
-            <button class="active" data-view="command"><i>⌘</i><span>Dashboard</span></button>
-            <button data-view="property"><i>⌂</i><span>Property Engine</span></button>
-            <button data-view="crm"><i>◎</i><span>CRM</span></button>
-            <button data-view="kanban"><i>▦</i><span>Kanban</span></button>
-            <button data-view="whatsapp"><i>◉</i><span>WhatsApp</span></button>
-            <button data-view="automation"><i>⚡</i><span>Automation</span></button>
-            <button data-view="analytics"><i>▰</i><span>Analytics</span></button>
-            <button data-view="docs"><i>☰</i><span>Docs</span></button>
-            <button data-view="marketplace"><i>◇</i><span>Marketplace</span></button>
-          </aside>
-          <div class="dash-main">
-            <header class="dash-top">
-              <div><p id="dashEyebrow">Live operation</p><h3 id="dashTitle">Command Center</h3></div>
-              <span class="dash-status"><i></i>Online</span>
-            </header>
-            <div class="dash-view" id="dashView"></div>
-          </div>
-        </section>
-      </section>
-    </main>
-    <div class="product-toast" id="productToast" role="status" aria-live="polite"></div>
-    <div class="home-modal-backdrop" id="founderBackdrop" hidden></div>
-    <dialog class="founder-modal" id="founderModal" aria-labelledby="founderTitle">
-      <button class="modal-close" id="founderClose" aria-label="Cerrar">×</button>
-      <p class="eyebrow">Founder Access</p>
-      <h2 id="founderTitle">Acceso Founder</h2>
-      <strong>$1,490 MXN / mes</strong>
-      <p>Mock temporal del flujo Founder. Aquí conectaremos checkout, onboarding y activación del Workspace.</p>
-      <button class="btn primary" id="founderOk" type="button">Entendido</button>
-    </dialog>
+  <body>
+    <div id="app"></div>
     <script src="app.js"></script>
   </body>
 </html>
